@@ -5,6 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.joining;
 
 public class LambadaTest {
 
@@ -105,6 +108,20 @@ public class LambadaTest {
         System.out.println("min和max方法========================================================================");
         Optional<Person> phpP= phpProgrammers.stream().max((p1, p2)->(p1.getSalary()-p2.getSalary()));
         System.out.println(JSONObject.toJSON(phpP.get().getSalary()));
+
+        System.out.println("结合 map 方法,我们可以使用 collect 方法来将我们的结果集放到一个字符串,一个 Set 或一个TreeSet中:");
+        //将 PHP programmers 的 first name 拼接成字符串:
+        String phpfirstName=phpProgrammers.stream().map(person -> person.getFirstName()).collect(joining(" ;"));
+        System.out.println("将 PHP programmers 的 first name 拼接成字符串:"+phpfirstName);
+        //将 Java programmers 的 first name 存放到 Set:
+        System.out.println("将 Java programmers 的 first name 存放到 Set:");
+        Set<String> phpFirstNameSet=phpProgrammers.stream().map(person -> person.getFirstName()).collect(Collectors.toSet());
+        phpFirstNameSet.forEach((phpPerson)-> System.out.print(phpPerson.toString()+" "));
+
+        //Streams 还可以是并行的(parallel)
+        System.out.println("计算付给 PHP programmers 的所有money:");
+        Double tatolSalary=phpProgrammers.parallelStream().mapToDouble((phpProgrammer)->phpProgrammer.getSalary()).sum();
+        System.out.println(tatolSalary);
 
 
     }
