@@ -22,7 +22,6 @@ public class UnaryFunctionTest<T>{
         return (UnaryFunction<T>)unaryFunctionObj;
     }
 
-
     //要对列表内的元素进行比较等操作,类表内的元素需要继承Coparator接口,对类型参数进行限制
     //<T extends Comparable<T>> 说明List内的元素是可以进行compare比较的
     public static <T extends Comparable<T>> T getMaxResult(List<T> list){
@@ -57,6 +56,7 @@ public class UnaryFunctionTest<T>{
 
         List<Integer> numList= Arrays.asList(123,234,3546354);
         System.out.println(getMaxResult(numList));
+
 
 
     }
