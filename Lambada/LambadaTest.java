@@ -123,6 +123,15 @@ public class LambadaTest {
         Double tatolSalary=phpProgrammers.parallelStream().mapToDouble((phpProgrammer)->phpProgrammer.getSalary()).sum();
         System.out.println(tatolSalary);
 
+        //我们可以使用summaryStatistics方法获得stream 中元素的各种汇总数据。 接下来,我们可以访问这些方法,比如getMax, getMin, getSum或getAverage:
+        List<Integer> arrList=Arrays.asList(1,2,3,4,5,6,7,8,9);
+        IntSummaryStatistics intSummaryStatistics=arrList.stream().mapToInt(x->x).summaryStatistics();
+        System.out.println("List中最大的数字 : " + intSummaryStatistics.getMax());
+        System.out.println("List中最小的数字 : " + intSummaryStatistics.getMin());
+        System.out.println("所有数字的总和   : " + intSummaryStatistics.getSum());
+        System.out.println("所有数字的平均值 : " + intSummaryStatistics.getAverage());
+        System.out.println(intSummaryStatistics.toString());
+
 
     }
 
