@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public class UnaryFunctionTest<T>{
 
-
    //泛型单例模式
     private static UnaryFunction<Object> unaryFunctionObj=new UnaryFunction<Object>() {
        @Override
@@ -24,6 +23,7 @@ public class UnaryFunctionTest<T>{
 
     //要对列表内的元素进行比较等操作,类表内的元素需要继承Coparator接口,对类型参数进行限制
     //<T extends Comparable<T>> 说明List内的元素是可以进行compare比较的
+    //<T extends Comparable<T>> 这种写法很常见,可以对T增加具体的操作方法
     public static <T extends Comparable<T>> T getMaxResult(List<T> list){
 
        //结合lambada表达式
